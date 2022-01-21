@@ -1,0 +1,14 @@
+<%= form_with model: @invite, url: invites_path do |f| %>
+  <h2 class="font-bold text-xl text-center mb-5"><%= current_book.name %>への招待</h2>
+
+  <%= f.email_field :invitee,
+                  placeholder: "example@gmail.com",
+                  required: true,
+                  autofocus: true,
+                  class: "text-center p-2 ml-2 w-full border-2" %>
+
+
+  <div class="py-8 text-center">
+    <%= f.submit "招待URLを作成", class: "shadow-lg bg-gray-600 text-white rounded-lg font-bold rounded-full text-xl py-7 px-9" %>
+  </div>
+<% end %>

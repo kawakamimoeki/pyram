@@ -1,0 +1,3 @@
+web: bin/rails server -p 3000
+postgres: postgres -D db/pgdata
+vite: bin/vite dev

@@ -1,0 +1,20 @@
+<div class="text-center">
+  <div class="py-3">
+    <h5 class="text-lg"><b><%= current_user.name %></b>さんの家計簿</h5>
+
+    <ul class="p-3">
+      <% @books.each do |book| %>
+        <li>
+          <%= link_to book.name, setting_book_path(book), class: "inline-block w-full #{"font-bold" if book == current_book}" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="py-2">
+    <%= button_to "ログアウトする", log_out_path, class: "", method: :delete %>
+  </div>
+  <div class="py-2">
+    <%= button_to "ユーザーを削除する", user_path(current_user), class: "text-red-500", method: :delete %>
+  </div>
+</div>

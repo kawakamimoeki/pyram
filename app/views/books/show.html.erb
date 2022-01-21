@@ -1,0 +1,14 @@
+<div data-controller="cards" class="py-3 px-10">
+  <div class="swiper-wrapper">
+    <%= render(CardComponent.new(book: current_book, current: Date.today)) %>
+    <% Category.all.each do |category| %>
+    <%= render(CardComponent.new(book: current_book, category: category, current: Date.today)) %>
+    <% end %>
+  </div>
+</div>
+
+<div class="fixed" style="bottom: 50px; right: 50%; transform: translateX(50%)">
+  <div class="py-3 text-center">
+    <%= link_to "書く", new_book_expense_path(current_book), style: "width: 100px; height: 100px; line-height: 100px", class: "block shadow-lg bg-gray-600 text-white rounded-lg font-bold rounded-full text-xl" %>
+  </div>
+</div>

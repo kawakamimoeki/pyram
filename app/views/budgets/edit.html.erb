@@ -1,0 +1,37 @@
+<%= form_with url: book_update_budget_path, class: "form" do |f| %>
+<div data-controller="cards" class="py-6 px-5">
+  <div class="swiper-wrapper">
+  <% @budgets.each do |budget| %>
+    <div class="swiper-slide rounded-lg bg-white shadow-2xl p-8" style="border: solid 3px <%= budget.category.color %>" data-controller="addition">
+      <h4 class="font-bold text-2xl form-label fw-bold" style="color: <%= budget.category.color %>"><%= budget.category.name %></h4>
+      <div class="py-4">
+        <p class="font-bold">日々払うお金</p>
+        <%= f.number_field "budget[#{budget.category.id}][daily]",
+                            class: "border-2 p-2 w-full",
+                            value: budget.daily,
+                            data: { addition_target: "input", action: "addition#call" } %>
+      </div>
+      <div class="py-4">
+        <p class="font-bold">月に一度払うお金</p>
+        <%= f.number_field "budget[#{budget.category.id}][monthly]",
+                            class: "border-2 p-2 w-full",
+                            value: budget.monthly,
+                            data: { addition_target: "input", action: "addition#call" } %>
+      </div>
+      <div class="py-4">
+        <p class="font-bold">合計</p>
+        <%= f.text_field "budget[#{budget.category.id}][all]",
+                          class: "p-2 w-full",
+                          value: budget.all,
+                          data: { addition_target: "destination" },
+                          readonly: true %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+<div class="py-3 text-center">
+  <%= f.submit "設定", class: "shadow-lg bg-gray-600 text-white rounded-lg font-bold rounded-full text-xl py-10 px-9" %>
+</div>
+<% end %>

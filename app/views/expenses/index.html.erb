@@ -1,0 +1,36 @@
+<h1 class="text-center text-4xl font-bold mb-5"><span style="color: <%= @category ? @category.color : Category::COLORS[:default] %>"><%= @category ? @category.name : "すべて" %></span> - <%= @current.strftime("%Y年%m月") %></h1>
+
+<p class="mt-5 text-center text-3xl font-bold">合計 <%= number_to_currency(@expenses_sum, unit: "¥", format: "%u %n", strip_insignificant_zeros: true) %></p>
+<% @expenses_by_date.each do |date, expenses| %>
+  <div class="border-b-2" style="margin-bottom: -15px; margin-top: 30px;"></div>
+  <div class="w-full text-center">
+    <h4 class="text-xl bg-white inline-block px-4 text-gray-400"><%= date %></h4>
+  </div>
+  <div class="py-4">
+  <% expenses.each do |expense| %>
+  <%= link_to edit_book_expense_path(@book, expense) do %>
+  <div class="flex p-4 mb-2 bg-white rounded-lg shadow-lg" style="border: 3px solid <%= expense.category.color %>">
+    <p class="font-bold mr-3" style="color: <%= expense.category.color %>"><%= expense.category.name %></p>
+    <p class="font-bold mr-3"><%= number_to_currency(expense.amount, unit: "¥", format: "%u %n", strip_insignificant_zeros: true) %></p>
+    <p class="text-gray-400"><%= expense.memo %></p>
+  </div>
+  <% end %>
+  <% end %>
+  </div>
+<% end %>
+
+
+
+
+<div class="fixed" style="bottom: 50px; right: 50%; transform: translateX(50%)">
+  <div class="py-3 text-center flex flex-row">
+    <%= link_to "前月", 
+                book_expenses_path(current_book, category: @category&.id, current: @current.last_month.end_of_month),
+                class: "block shadow-lg mx-7 bg-gray-600 text-white rounded-lg font-bold rounded-full text-xl",
+                style: "width: 100px; height: 100px; line-height: 100px" %>
+    <%= link_to "翌月",
+                book_expenses_path(current_book, category: @category&.id, current: @current.next_month.end_of_month),
+                class: "block shadow-lg mx-7 bg-gray-600 text-white rounded-lg font-bold rounded-full text-xl", 
+                style: "width: 100px; height: 100px; line-height: 100px" %>
+  </div>
+</div>

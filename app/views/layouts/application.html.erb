@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Fun</title>
+    <title>fun</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag 'application' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="font-san text-gray-600">
+    <header class="px-4 shadow-md fixed w-full bg-white" style="z-index: 100; line-height: 50px; height: 50px;">
+      <p class="text-lg font-bold inline-block italic"><%= link_to "FUN!", current_book ? book_path(current_book) : root_path, class: "text-decoration-none text-dark" %></p>
+      <% if current_user %>
+        <%= link_to "#{current_user.name} さん", setting_user_path(current_user), style: "line-height: 50px;", class: "text-sm font-bold inline-block float-right mx-2" %>
+      <% end %>
+      <% if current_book %>
+      <%= link_to current_book.name, setting_book_path(current_book), style: "line-height: 50px;", class: "text-sm font-bold inline-block float-right mx-2" %>
+      <%= link_to "予算をたてる", book_edit_budget_path(book_id: current_book.id), style: "line-height: 50px;", class: "text-sm font-bold inline-block float-right mx-2" %>
+      <% end %>
+    </header>
+
+    <main class="mx-auto px-3" style="overflow: hidden; box-sizing: border-box; width: 100%; padding-top: 80px; padding-bottom: 200px; max-width: 500px;">
+      <%= render(AlertComponent.new(text: flash[:notice]))%>
+      <%= yield %>
+    </main>
   </body>
 </html>

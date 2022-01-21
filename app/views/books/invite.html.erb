@@ -1,0 +1,10 @@
+<h3 class="font-weight-normal"><b><%= @book.name %></b> への招待</h3>
+
+<div class="input-group">
+<input type="text" id="url" class="form-control input-group-item" value="<%= @url %>">
+<button class="btn btn-primary input-group-item" data-clipboard-action="copy" data-clipboard-target="#url">
+    URLをコピー
+</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
