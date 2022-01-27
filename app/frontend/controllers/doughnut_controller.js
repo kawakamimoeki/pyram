@@ -9,10 +9,15 @@ export class DoughnutController extends Controller {
   }
 
   connect () {
-    this.chart().animate(this.expenseValue / this.budgetValue)
+    if (this.expenseValue < this.budgetValue) {
+      this.chart().animate(this.expenseValue / this.budgetValue)
+    } else {
+      this.chart().animate(1)
+    }
   }
 
   chart () {
+    const expense = this.expenseValue
     const budget = this.budgetValue
     const color = this.colorValue
     const chart = new ProgressBar.Circle(this.element, {
@@ -26,7 +31,7 @@ export class DoughnutController extends Controller {
       to: { color: color, a:1 },
       step: function(state, circle) {
         circle.path.setAttribute('stroke', state.color)
-        circle.setText(`¥ ${parseInt(circle.value() * budget)} / ${budget}`)
+        circle.setText(`¥ ${expense} / ${budget}`)
       }
     })
     chart.text.style.fontWeight = "bold"
