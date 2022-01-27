@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-  has_and_belongs_to_many :users, optional: true, depandant: :destroy
+  has_and_belongs_to_many :users, optional: true
   has_many :budgets, dependent: :destroy
   has_many :expenses, dependent: :destroy
   has_many :invites, dependent: :destroy
