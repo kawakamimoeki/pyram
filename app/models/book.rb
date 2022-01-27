@@ -19,7 +19,7 @@ class Book < ApplicationRecord
   def expense_stack(current: Date.today, category_id: nil)
     stack = 0
     (1..current.day).to_a.map do |day|
-      e = expenses.where(date: Date.new(current.year, current.month, day))
+      e = expenses.where(date: Date.new(current.year, current.month, day), monthly: false)
       e = e.where(category_id: category_id) if category_id
       stack += e.sum(:amount)
       stack
