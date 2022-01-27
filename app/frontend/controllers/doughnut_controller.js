@@ -16,10 +16,16 @@ export class DoughnutController extends Controller {
     }
   }
 
+  currency (value) {
+    const fometter = Intl.NumberFormat('ja-JP')
+    return fometter.format(value)
+  }
+
   chart () {
     const expense = this.expenseValue
     const budget = this.budgetValue
     const color = this.colorValue
+    const currency = this.currency
     const chart = new ProgressBar.Circle(this.element, {
       color: color,
       trailColor: '#eee',
@@ -31,7 +37,10 @@ export class DoughnutController extends Controller {
       to: { color: color, a:1 },
       step: function(state, circle) {
         circle.path.setAttribute('stroke', state.color)
-        circle.setText(`¥ ${expense} / ${budget}`)
+        circle.setText(`
+          <p style="text-align: center; padding: 0 7px;">¥ ${currency(expense)} </p>
+          <p style="border: 1px solid ${color}; margin: 5px 0;"></p>
+          <p style="text-align: center; padding: 0 7px;">¥ ${currency(budget)}</p>`)
       }
     })
     chart.text.style.fontWeight = "bold"
