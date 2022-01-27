@@ -15,7 +15,7 @@ class ExpensesController < ApplicationController
   def update
     @expense = Expense.update(expense_param)
     flash[:notice] = '支出の内容を変更しました😎'
-    redirect_to book_expenses_path(current_book, category: session[:category]['id'], current: session[:current])
+    redirect_to book_expenses_path(current_book, category: (session[:category] ? session[:category]['id'] : nil), current: session[:current])
   end
 
   def index
