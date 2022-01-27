@@ -19,10 +19,7 @@
   </div>
 <% end %>
 
-
-
-
-<div class="fixed" style="bottom: 50px; right: 50%; transform: translateX(50%)">
+<div class="fixed" style="bottom: 30px; right: 50%; transform: translateX(50%)">
   <div class="py-3 text-center flex flex-row">
     <%= link_to "前月", 
                 book_expenses_path(current_book, category: @category&.id, current: @current.last_month.end_of_month),
