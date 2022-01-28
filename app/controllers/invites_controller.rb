@@ -13,6 +13,7 @@ class InvitesController < ApplicationController
       token: SecureRandom.base64(13),
       book_id: current_book.id
     )
+    @invite_url = invite_url(@invite, key: @invite.key, token: @invite.token)
   end
 
   def show
