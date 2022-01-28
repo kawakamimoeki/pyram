@@ -13,6 +13,16 @@
       "value": false
     }
   },
+  "env": {
+    "NPM_CONFIG_PRODUCTION": {
+      "description": "Access to packages declared under devDependencies in a different buildpack.",
+      "value": false
+    },
+    "YARN_PRODUCTION": {
+      "description": "Access to packages declared under devDependencies in a different buildpack.",
+      "value": false
+    }
+  },
   "formation": {
     "web": {
       "quantity": 1,
