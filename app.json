@@ -1,0 +1,32 @@
+{
+  "name": "Small Sharp Tool",
+  "description": "This app does one little thing, and does it well.",
+  "website": "https://fun.moeki.dev",
+  "repository": "https://github.com/moekidev/fun",
+  "env": {
+    "NPM_CONFIG_PRODUCTION": {
+      "description": "Access to packages declared under devDependencies in a different buildpack.",
+      "value": false
+    },
+    "YARN_PRODUCTION": {
+      "description": "Access to packages declared under devDependencies in a different buildpack.",
+      "value": false
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "standard-1x"
+    }
+  },
+  "image": "heroku/ruby",
+  "addons": [
+    {
+      "plan": "heroku-postgresql"
+    }
+  ],
+  "buildpacks": [
+    { "url": "heroku/nodejs" },
+    { "url": "heroku/ruby" }
+  ]
+}
