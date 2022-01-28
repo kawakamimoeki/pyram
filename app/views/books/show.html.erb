@@ -7,8 +7,4 @@
   </div>
 </div>
 
-<div class="fixed" style="bottom: 30px; right: 50%; transform: translateX(50%)">
-  <div class="py-3 text-center">
-    <%= link_to "書く", new_book_expense_path(current_book), style: "width: 100px; height: 100px; line-height: 100px", class: "block shadow-lg bg-gray-600 text-white rounded-lg font-bold rounded-full text-xl" %>
-  </div>
-</div>
+<%= link_to "書く", new_book_expense_path(current_book), class:"fixed bg-gray-600 text-white block w-full py-6 text-lg shadow-xl text-center font-bold", style:"bottom: 0px; right: 0%" %>

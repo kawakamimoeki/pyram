@@ -38,9 +38,9 @@ export class DoughnutController extends Controller {
       step: function(state, circle) {
         circle.path.setAttribute('stroke', state.color)
         circle.setText(`
-          <p style="text-align: center; padding: 0 7px;">¥ ${currency(expense)} </p>
+          <p style="text-align: center; padding: 0 4px;">¥ ${currency(expense)} </p>
           <p style="border: 1px solid ${color}; margin: 5px 0;"></p>
-          <p style="text-align: center; padding: 0 7px;">¥ ${currency(budget)}</p>`)
+          <p style="text-align: center; padding: 0 4px;">¥ ${currency(budget)}</p>`)
       }
     })
     chart.text.style.fontWeight = "bold"
