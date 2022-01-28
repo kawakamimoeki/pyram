@@ -1,14 +1,6 @@
 <h2 class="text-center italic font-bold text-9xl">FUN!</h2>
 <h3 class="text-center italic font-bold text-3xl">家計簿はもっと<br/>楽しくなる！</h3>
 
-<div data-controller="cards" class="p-6">
-  <div class="swiper-wrapper">
-    <%= render(CardComponent.new(book: @sample_book, current: Date.new(2022, 1, 27))) %>
-    <% Category.all.each do |category| %>
-    <%= render(CardComponent.new(book: @sample_book, category: category, current: Date.new(2022, 1, 27))) %>
-    <% end %>
-  </div>
-</div>
 <div class="text-center py-16">
   <%= render(ButtonComponent.new(text: "Googleでログインする", url: "/auth/google_oauth2", method: :post )) %>
 </div>

@@ -5,7 +5,5 @@ class HomeController < ApplicationController
 
   def index
     redirect_to book_path(current_book) if current_book
-    @expense = Expense.new
-    @sample_book = Book.find_by(name: "Sample Book")
   end
 end
