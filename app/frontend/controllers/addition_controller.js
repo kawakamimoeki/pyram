@@ -6,7 +6,7 @@ export class AddtionController extends Controller {
   call () {
     let sum = 0
     this.inputTargets.forEach(ele => {
-      const input = parseInt(ele.value)
+      let input = parseInt(ele.value)
       if (input === NaN) input = 0
       sum += input
     })
