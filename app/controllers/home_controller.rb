@@ -4,7 +4,5 @@ class HomeController < ApplicationController
   layout "landing_page"
 
   def index
-    @expense = Expense.new
-    @sample_book = Book.find_by(name: "Sample Book")
   end
 end
