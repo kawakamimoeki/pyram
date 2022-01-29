@@ -4,6 +4,10 @@ export class ColorizeController extends Controller {
   static targets = ['source']
   static values = { colors: Object }
 
+  connect () {
+    this.call()
+  }
+
   call () {
     this.sourceTargets.forEach(ele => {
       if (ele.checked) {
