@@ -10,7 +10,7 @@ class Book < ApplicationRecord
       'payment.date' => current.beginning_of_month..current.end_of_month,
       book_id: id
     )
-    e.where(type_id: type_id) if type_id
+    e = e.where(type_id: type_id) if type_id
     e
   end
 
