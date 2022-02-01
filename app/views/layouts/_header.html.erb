@@ -1,5 +1,5 @@
 <header class="px-3 shadow fixed w-full bg-white" style="z-index: 100; line-height: 50px; height: 50px;">
-  <p class="text-lg font-bold inline-block italic"><%= link_to "FUN!", root_path, class: "text-decoration-none text-dark" %></p>
+  <p class="text-lg font-bold inline-block italic"><%= link_to "Kakbo", root_path, class: "text-decoration-none text-dark" %></p>
   <% if current_user %>
     <%= link_to "#{current_user.name} さん", setting_user_path(current_user), style: "font-size: 0.8rem;",class: "text-decoration-none text-dark fw-bold inline-block float-right mx-2" %>
   <% end %>
