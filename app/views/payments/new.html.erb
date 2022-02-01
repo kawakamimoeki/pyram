@@ -8,13 +8,19 @@
   </div>
   <div class="py-2">
     <%= f.label "最低限の暮らしのためのお金", class:"block mb-2" %>
-    <%= f.number_field :required, class: "p-2 border-2 w-full",
+    <div>
+      <span class="pr-3">¥</span>
+      <%= f.number_field :required, class: "p-2 border-b-2 w-4/5",
           data: { expense_field_target: "required", action: "expense-field#call" } %>
+    </div>
   </div>
   <div class="py-2">
     <%= f.label "豊かな暮らしのためのお金", class: "block mb-2" %>
-    <%= f.number_field :affluent, class: "p-2 border-2 w-full bg-gray-100", readonly: true,
+    <div>
+      <span class="pr-3">¥</span>
+      <%= f.number_field :affluent, class: "p-2 border-b-2 w-4/5 bg-gray-100", readonly: true,
           data: { expense_field_target: "affluent" } %>
+    </div>
   </div>
   <div class="py-2">
     <%= f.label "日付", class: "block mb-2" %>
