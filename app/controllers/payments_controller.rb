@@ -46,7 +46,6 @@ class PaymentsController < ApplicationController
     @current = Date.parse(params[:current])
     @book = Book.find(params[:book_id])
     payments = @book.payments.where(date: @current.beginning_of_month..@current.end_of_month).order(date: :desc)
-    # @payments_sum = payments.sum(:amount)
     @payments_by_date = payments.group_by { |payment| payment.date.strftime('%Y/%m/%d') }
     session[:current] = @current
   end

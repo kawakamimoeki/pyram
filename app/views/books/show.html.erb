@@ -7,4 +7,7 @@
   </div>
 </div>
 
-<%= link_to "書く", new_book_payment_path(current_book), class:"fixed bg-gray-600 text-white block w-full py-6 text-lg shadow-xl text-center font-bold", style:"bottom: 0px; right: 0%" %>
+<div class="flex flex-row fixed w-full shadow-2xl" style="bottom: 0px; right: 0px">
+  <%= link_to "見る", book_payments_path(current_book, current: Date.today),class:"inline-block bg-gray-100 text-gray-600 w-1/2 py-4 shadow-xl text-center font-bold" %>
+  <%= link_to "書く", new_book_payment_path(current_book), class:"inline-block bg-gray-600 text-white w-1/2 py-4 shadow-xl text-center font-bold" %>
+</div>

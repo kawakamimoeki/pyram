@@ -22,8 +22,8 @@
 <div class="flex flex-row fixed w-full shadow-2xl" style="bottom: 0px; right: 0px">
   <%= link_to "前月",
               book_payments_path(current_book, type: @type&.id, current: @current.last_month.end_of_month),
-              class: "inline-block w-1/2 py-6 font-bold bg-gray-600 text-white text-center" %>
+              class: "inline-block w-1/2 py-4 font-bold bg-gray-600 text-white text-center" %>
   <%= link_to "翌月",
               book_payments_path(current_book, type: @type&.id, current: @current.next_month.end_of_month),
-              class: "inline-block w-1/2 py-6 font-bold text-gray-600 bg-gray-200 text-center" %>
+              class: "inline-block w-1/2 py-4 font-bold text-gray-600 bg-gray-200 text-center" %>
 </div>
