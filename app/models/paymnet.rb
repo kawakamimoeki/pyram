@@ -1,2 +1,0 @@
-class Paymnet < ApplicationRecord
-end
