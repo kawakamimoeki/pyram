@@ -35,7 +35,7 @@ class InvitesController < ApplicationController
         return
       end
 
-      @invite.book.users << current_user
+      @invite.book.users << current_user unless @invite.book.users.include?(current_user)
       open_book @invite.book
       flash[:notice] = "招待状を受け取りました。#{@invite.book.name} へようこそ！"
       redirect_to book_path(current_book)
