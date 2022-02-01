@@ -26,8 +26,8 @@ class BooksController < ApplicationController
     @book.save
     open_book @book
 
-    Category.all.each do |category|
-      Budget.create(book_id: @book.id, category_id: category.id)
+    Type.all.each do |type|
+      Budget.create(book_id: @book.id, type_id: type.id)
     end
 
     flash[:notice] = "#{@book.name} を作成しました💪 予算をたててみましょう！"

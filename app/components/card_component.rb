@@ -1,22 +1,24 @@
 # frozen_string_literal: true
 
 class CardComponent < ViewComponent::Base
-  def initialize(book:, category: nil, current: Date.today)
+  include ApplicationHelper
+  
+  def initialize(book:, type: nil, current: Date.today)
     @book = book
-    @category = category
+    @type = type
     @current = current
   end
 
   def color
-    @category ? @category.color : Category::COLORS[:default]
+    @type ? type_color(@type.slug) : type_color(:all)
   end
 
   def expenses_in_month
-    @book.expenses_in_month(current: @current, category_id: @category&.id).sum(:amount)
+    @book.expenses_in_month(current: @current, type_id: @type&.id).sum(:amount)
   end
 
   def sum_budgets
-    @book.sum_budgets(category_id: @category&.id)
+    @book.sum_budgets(type_id: @type&.id)
   end
 
   def days
@@ -24,10 +26,10 @@ class CardComponent < ViewComponent::Base
   end
 
   def expense_stack
-    @book.expense_stack(current: @current, category_id: @category&.id)
+    @book.expense_stack(current: @current, type_id: @type&.id)
   end
 
   def budget_stack
-    @book.budget_stack(current: @current, category_id: @category&.id)
+    @book.budget_stack(current: @current, type_id: @type&.id)
   end
 end

@@ -1,4 +1,4 @@
-class CategoryType < ApplicationRecord
+class TypeType < ApplicationRecord
   has_many :categories
 
   COLORS = {

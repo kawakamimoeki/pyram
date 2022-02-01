@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_27_125906) do
+ActiveRecord::Schema.define(version: 2022_01_27_011706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -35,30 +35,23 @@ ActiveRecord::Schema.define(version: 2022_01_27_125906) do
     t.integer "daily", default: 0
     t.integer "monthly", default: 0
     t.uuid "book_id"
-    t.uuid "category_id"
+    t.uuid "type_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["book_id"], name: "index_budgets_on_book_id"
-    t.index ["category_id"], name: "index_budgets_on_category_id"
-  end
-
-  create_table "categories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.index ["type_id"], name: "index_budgets_on_type_id"
   end
 
   create_table "expenses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.integer "amount"
-    t.date "date"
-    t.string "memo"
+    t.uuid "payment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.uuid "category_id"
+    t.uuid "type_id"
     t.uuid "book_id"
-    t.boolean "monthly", default: false
     t.index ["book_id"], name: "index_expenses_on_book_id"
-    t.index ["category_id"], name: "index_expenses_on_category_id"
+    t.index ["payment_id"], name: "index_expenses_on_payment_id"
+    t.index ["type_id"], name: "index_expenses_on_type_id"
   end
 
   create_table "invites", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -72,6 +65,23 @@ ActiveRecord::Schema.define(version: 2022_01_27_125906) do
     t.index ["book_id"], name: "index_invites_on_book_id"
   end
 
+  create_table "payments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.date "date"
+    t.string "memo"
+    t.boolean "monthly", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.uuid "book_id"
+    t.index ["book_id"], name: "index_payments_on_book_id"
+  end
+
+  create_table "types", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -80,8 +90,10 @@ ActiveRecord::Schema.define(version: 2022_01_27_125906) do
   end
 
   add_foreign_key "budgets", "books"
-  add_foreign_key "budgets", "categories"
+  add_foreign_key "budgets", "types"
   add_foreign_key "expenses", "books"
-  add_foreign_key "expenses", "categories"
+  add_foreign_key "expenses", "payments"
+  add_foreign_key "expenses", "types"
   add_foreign_key "invites", "books"
+  add_foreign_key "payments", "books"
 end

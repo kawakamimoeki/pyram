@@ -11,7 +11,7 @@ export class ColorizeController extends Controller {
   call () {
     this.sourceTargets.forEach(ele => {
       if (ele.checked) {
-        this.element.style.borderColor = this.colorsValue[ele.dataset.categoryName]
+        this.element.style.borderColor = this.colorsValue[ele.dataset.typeName]
       }
     })
   }

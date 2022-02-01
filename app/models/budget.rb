@@ -1,5 +1,5 @@
 class Budget < ApplicationRecord
-  belongs_to :category
+  belongs_to :type
 
   def all
     daily + monthly

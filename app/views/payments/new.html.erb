@@ -1,0 +1,36 @@
+<%= form_with url: book_payments_path,
+              model: @payment do |f| %>
+  <div class="w-full py-16 px-8 rounded-xl border-4 shadow-lg border-white"
+        data-controller="expense-field">
+  <div class="py-2">
+    <%= f.label "¥", class: "pr-3 text-4xl" %>
+    <%= f.number_field :amount, class: "p-2 text-4xl w-4/5 border-b-2", placeholder: "900", autofocus: true, required: true,
+          data: { expense_field_target: "all", action: "expense-field#call" } %>
+  </div>
+  <div class="py-2">
+    <%= f.label "最低限の暮らしのためのお金", class:"block mb-2" %>
+    <%= f.number_field :required, class: "p-2 border-2 w-full",
+          data: { expense_field_target: "required", action: "expense-field#call" } %>
+  </div>
+  <div class="py-2">
+    <%= f.label "豊かな暮らしのためのお金", class: "block mb-2" %>
+    <%= f.number_field :affluent, class: "p-2 border-2 w-full bg-gray-100", readonly: true,
+          data: { expense_field_target: "affluent" } %>
+  </div>
+  <div class="py-2">
+    <%= f.label "日付", class: "block mb-2" %>
+    <%= f.date_field :date, class: "p-2 border-2 w-full", value: Date.today.strftime %>
+  </div>
+  <div class="py-2">
+    <%= f.check_box :monthly, as: :boolean %>
+    <%= f.label :monthly, "月に一度の支払い" %>
+  </div>
+  <div class="py-2">
+    <%= f.label "メモ", class: "block mb-2" %>
+    <%= f.text_field :memo, class: "p-2 border-2 w-full", placeholder: "イオン"  %>
+  </div>
+  </div>
+  <div class="py-10 text-center w-full">
+    <%= f.submit "追加", style: "width: 100px; height: 100px; line-height: 100px", class: "inline-block shadow-lg bg-gray-600 text-white rounded-lg font-bold rounded-full text-xl" %>
+  </div>
+<% end %>

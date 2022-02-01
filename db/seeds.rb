@@ -6,8 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-categories = Category.create([
-  { name: "必要" },
-  { name: "便利" },
-  { name: "楽しむ" }
+categories = Type.create([
+  { name: "最低限の暮らし", slug: :required },
+  { name: "豊かな暮らし", slug: :affluent }
 ])

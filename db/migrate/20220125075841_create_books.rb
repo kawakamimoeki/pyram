@@ -6,6 +6,7 @@ class CreateBooks < ActiveRecord::Migration[7.0]
       t.timestamps
     end
 
+    add_reference :payments, :book, foreign_key: true, type: :uuid
     add_reference :expenses, :book, foreign_key: true, type: :uuid
   end
 end

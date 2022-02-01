@@ -5,11 +5,11 @@ class BudgetsController < ApplicationController
   end
 
   def update
-    Category.all.each do |category|
-      budget = Budget.find_by(category_id: category.id, book_id: current_book.id)
+    Type.all.each do |type|
+      budget = Budget.find_by(type_id: type.id, book_id: current_book.id)
       budget.update(
-        daily: params[:budget][category.id.to_s][:daily],
-        monthly: params[:budget][category.id.to_s][:monthly]
+        daily: params[:budget][type.id.to_s][:daily],
+        monthly: params[:budget][type.id.to_s][:monthly]
       )
     end
 

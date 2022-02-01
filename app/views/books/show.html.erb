@@ -1,10 +1,10 @@
 <div data-controller="cards" class="py-3 px-10">
   <div class="swiper-wrapper">
     <%= render(CardComponent.new(book: current_book, current: Date.today)) %>
-    <% Category.all.each do |category| %>
-    <%= render(CardComponent.new(book: current_book, category: category, current: Date.today)) %>
+    <% Type.all.each do |type| %>
+    <%= render(CardComponent.new(book: current_book, type: type, current: Date.today)) %>
     <% end %>
   </div>
 </div>
 
-<%= link_to "書く", new_book_expense_path(current_book), class:"fixed bg-gray-600 text-white block w-full py-6 text-lg shadow-xl text-center font-bold", style:"bottom: 0px; right: 0%" %>
+<%= link_to "書く", new_book_payment_path(current_book), class:"fixed bg-gray-600 text-white block w-full py-6 text-lg shadow-xl text-center font-bold", style:"bottom: 0px; right: 0%" %>

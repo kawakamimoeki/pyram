@@ -4,7 +4,7 @@ import { Controller } from '@hotwired/stimulus'
 export class LineController extends Controller {
   static values = {
     days: Array,
-    expenses: Array,
+    payments: Array,
     budgets: Array
   }
 
@@ -20,7 +20,7 @@ export class LineController extends Controller {
               label: '支出',
               backgroundColor: '#fb923c',
               borderColor: '#fb923c',
-              data: this.expensesValue,
+              data: this.paymentsValue,
               pointStyle: 'line'
             },
             {

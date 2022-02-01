@@ -4,7 +4,7 @@ class CreateBudgets < ActiveRecord::Migration[7.0]
       t.integer :daily, default: 0
       t.integer :monthly, default: 0
       t.references :book, foreign_key: true, type: :uuid
-      t.references :category, foreign_key: true, type: :uuid
+      t.references :type, foreign_key: true, type: :uuid
 
       t.timestamps
     end

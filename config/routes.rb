@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :books do
     get "/budgets/edit", to: "budgets#edit", as: :edit_budget
     post "/budgets", to: "budgets#update", as: :update_budget
-    resources :expenses
+    resources :payments
   end
 
   get "books/:id/setting", to: "books#setting", as: :setting_book

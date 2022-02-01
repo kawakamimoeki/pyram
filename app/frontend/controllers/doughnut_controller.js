@@ -4,13 +4,13 @@ import { Controller } from '@hotwired/stimulus'
 export class DoughnutController extends Controller {
   static values = {
     color: String,
-    expense: Number,
+    payment: Number,
     budget: Number
   }
 
   connect () {
-    if (this.expenseValue < this.budgetValue) {
-      this.chart().animate(this.expenseValue / this.budgetValue)
+    if (this.paymentValue < this.budgetValue) {
+      this.chart().animate(this.paymentValue / this.budgetValue)
     } else {
       this.chart().animate(1)
     }
@@ -22,7 +22,7 @@ export class DoughnutController extends Controller {
   }
 
   chart () {
-    const expense = this.expenseValue
+    const payment = this.paymentValue
     const budget = this.budgetValue
     const color = this.colorValue
     const currency = this.currency
@@ -38,7 +38,7 @@ export class DoughnutController extends Controller {
       step: function(state, circle) {
         circle.path.setAttribute('stroke', state.color)
         circle.setText(`
-          <p style="text-align: center; padding: 0 4px;">¥ ${currency(expense)} </p>
+          <p style="text-align: center; padding: 0 4px;">¥ ${currency(payment)} </p>
           <p style="border: 1px solid ${color}; margin: 5px 0;"></p>
           <p style="text-align: center; padding: 0 4px;">¥ ${currency(budget)}</p>`)
       }

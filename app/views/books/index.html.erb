@@ -4,24 +4,24 @@
     <h4>すべて</h4>
     <div data-controller="doughnut"
           data-doughnut-color-value="#444"
-          data-doughnut-expense-value="<%= current_book.sum_expenses %>"
+          data-doughnut-payment-value="<%= current_book.sum_payments %>"
           data-doughnut-budget-value="<%= current_book.sum_budgets %>">
     <canvas data-controller="line"
           data-line-days-value="<%= (1..Time.days_in_month(Date.today.month)).to_a %>"
-          data-line-expenses-value="<%= Expense.total(book_id: current_book.id).to_json.html_safe %>"
+          data-line-payments-value="<%= Expense.total(book_id: current_book.id).to_json.html_safe %>"
           data-line-budgets-value="<%= current_book.budget_stack.to_json.html_safe %>"></canvas>
   </div>
-  <% Category.all.each do |category| %>
+  <% Type.all.each do |type| %>
   <div class="p-3 swiper-slide rounded-3 bg-white shadow">
-    <h4><%= category.name %></h4>
+    <h4><%= type.name %></h4>
     <div data-controller="doughnut"
-        data-doughnut-color-value="<%= category.color %>"
-        data-doughnut-expense-value="<%= current_book.sum_expenses(category_id: category.id) %>"
-        data-doughnut-budget-value="<%= current_book.sum_budgets(category_id: category.id) %>"></div>
+        data-doughnut-color-value="<%= type_color(type.slug) %>"
+        data-doughnut-payment-value="<%= current_book.sum_payments(type_id: type.id) %>"
+        data-doughnut-budget-value="<%= current_book.sum_budgets(type_id: type.id) %>"></div>
     <canvas data-controller="line"
           data-line-days-value="<%= (1..Time.days_in_month(Date.today.month)).to_a %>"
-          data-line-expenses-value="<%= Expense.total(book_id: current_book.id, category_id: category.id).to_json.html_safe %>"
-          data-line-budgets-value="<%= Budget.find_by(book_id: current_book.id, category_id: category.id).daily_stack.to_json.html_safe %>"></canvas>
+          data-line-payments-value="<%= Expense.total(book_id: current_book.id, type_id: type.id).to_json.html_safe %>"
+          data-line-budgets-value="<%= Budget.find_by(book_id: current_book.id, type_id: type.id).daily_stack.to_json.html_safe %>"></canvas>
   </div>
   <% end %>
   </div>
