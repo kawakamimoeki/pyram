@@ -39,7 +39,7 @@ class PaymentsController < ApplicationController
     @payment.required_expense.update(amount: payment_param[:required])
     @payment.affluent_expense.update(amount: payment_param[:affluent])
     flash[:notice] = '支出の内容を変更しました😎'
-    redirect_to book_payments_path(current_book, type: (session[:type] ? session[:type]['id'] : nil), current: session[:current])
+    redirect_to book_path(current_book)
   end
 
   private
