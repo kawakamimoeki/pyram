@@ -20,7 +20,14 @@
   <%= link_to edit_book_payment_path(@book, payment) do %>
   <div class="flex flex-row p-4 mb-4 bg-white rounded-lg shadow-lg">
     <div class="flex flex-col">
-      <p class="font-bold"><%= number_to_currency(payment.expenses.sum(:amount), unit: "¥", format: "%u %n", strip_insignificant_zeros: true) %></p>
+      <p class="font-bold">
+        <%= number_to_currency(payment.expenses.sum(:amount), unit: "¥", format: "%u %n", strip_insignificant_zeros: true) %>
+        =
+          <span style="color: <%= type_color("required") %>"><%= number_to_currency(payment.required_expense.amount, unit: "¥", format: "%u %n", strip_insignificant_zeros: true) %></span>
+          +
+          <span style="color: <%= type_color("affluent") %>"><%= number_to_currency(payment.affluent_expense.amount, unit: "¥", format: "%u %n", strip_insignificant_zeros: true) %></span>
+        
+      </p>
       <p class="text-gray-400"><%= payment.memo %></p>
     </div>
   </div>
