@@ -28,7 +28,7 @@
           <span style="color: <%= type_color("affluent") %>"><%= number_to_currency(payment.affluent_expense.amount, unit: "¥", format: "%u %n", strip_insignificant_zeros: true) %></span>
         
       </p>
-      <p class="text-gray-400"><%= payment.memo %></p>
+      <p class="text-gray-400"><%= [payment.tag&.name, payment.memo].select { |c| c && c.present? }.join("・") %></p>
     </div>
   </div>
   <% end %>
