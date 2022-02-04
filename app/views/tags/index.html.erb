@@ -1,0 +1,14 @@
+<div class="flex flex-wrap">
+<% @tags.each do |tag| %>
+  <div class="p-3 w-1/2">
+    <%= link_to tag.name, book_tag_path(current_book.id, tag.id), class: "block shadow-lg py-10 rounded-xl text-center font-bold" %>
+  </div>
+<% end %>
+</div>
+
+<div class="flex flex-row fixed w-full shadow-2xl" style="bottom: 0px; right: 0px">
+  <%= link_to "作成する", 
+              new_book_tag_path,
+              class: "inline-block w-full py-4 font-bold text-white bg-gray-600 text-center" %>
+</div>
+

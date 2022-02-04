@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_03_033124) do
+ActiveRecord::Schema.define(version: 2022_02_04_091028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -72,7 +72,17 @@ ActiveRecord::Schema.define(version: 2022_02_03_033124) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.uuid "book_id"
+    t.uuid "tag_id"
     t.index ["book_id"], name: "index_payments_on_book_id"
+    t.index ["tag_id"], name: "index_payments_on_tag_id"
+  end
+
+  create_table "tags", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.uuid "book_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_tags_on_book_id"
   end
 
   create_table "types", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -96,4 +106,6 @@ ActiveRecord::Schema.define(version: 2022_02_03_033124) do
   add_foreign_key "expenses", "types"
   add_foreign_key "invites", "books"
   add_foreign_key "payments", "books"
+  add_foreign_key "payments", "tags"
+  add_foreign_key "tags", "books"
 end

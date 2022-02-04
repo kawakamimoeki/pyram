@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get "/budgets/edit", to: "budgets#edit", as: :edit_budget
     post "/budgets", to: "budgets#update", as: :update_budget
     resources :payments
+    resources :tags
   end
 
   get "books/:id/setting", to: "books#setting", as: :setting_book

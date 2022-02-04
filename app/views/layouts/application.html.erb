@@ -17,6 +17,7 @@
       <% end %>
       <% if current_book %>
       <%= link_to current_book.name, setting_book_path(current_book), style: "line-height: 50px;", class: "text-sm font-bold inline-block float-right mx-2" %>
+      <%= link_to "タグ", book_tags_path(book_id: current_book.id), style: "line-height: 50px;", class: "text-sm font-bold inline-block float-right mx-2" %>
       <%= link_to "予算", book_edit_budget_path(book_id: current_book.id), style: "line-height: 50px;", class: "text-sm font-bold inline-block float-right mx-2" %>
       <% end %>
     </header>

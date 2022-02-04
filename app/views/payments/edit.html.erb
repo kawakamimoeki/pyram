@@ -34,6 +34,10 @@
     <%= f.label :monthly, "月に一度の支払い" %>
   </div>
   <div class="py-2">
+    <%= f.label "タグ", class: "block mb-2" %>
+    <%= f.select :tag_id, Tag.all.pluck(:name, :id), include_blank: true, class: "w-full p-2 border-2" %>
+  </div>
+  <div class="py-2">
     <%= f.label "メモ", class: "block mb-2" %>
     <%= f.text_field :memo, class: "p-2 border-2 w-full", placeholder: "イオン"  %>
   </div>

@@ -7,6 +7,7 @@ class PaymentsController < ApplicationController
     payment = Payment.create(
       book_id: current_book.id,
       date: payment_param[:date],
+      tag_id: payment_param[:tag_id],
       memo: payment_param[:memo],
       monthly: payment_param[:monthly]
     )
@@ -33,6 +34,7 @@ class PaymentsController < ApplicationController
     @payment = Payment.find(params[:id])
     @payment.update(
       date: payment_param[:date],
+      tag_id: payment_param[:tag_id],
       memo: payment_param[:memo],
       monthly: payment_param[:monthly]
     )
@@ -44,6 +46,6 @@ class PaymentsController < ApplicationController
 
   private
   def payment_param
-    params.require(:payment).permit(:amount, :required, :affluent, :date, :monthly, :type_id, :memo)
+    params.require(:payment).permit(:amount, :required, :affluent, :date, :monthly, :type_id, :tag_id, :memo)
   end
 end
