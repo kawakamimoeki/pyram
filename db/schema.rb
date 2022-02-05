@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_04_091028) do
+ActiveRecord::Schema.define(version: 2022_02_05_222101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2022_02_04_091028) do
     t.datetime "updated_at", precision: 6, null: false
     t.uuid "book_id"
     t.uuid "tag_id"
+    t.integer "repeat_month", default: 1
     t.index ["book_id"], name: "index_payments_on_book_id"
     t.index ["tag_id"], name: "index_payments_on_tag_id"
   end
