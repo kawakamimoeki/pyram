@@ -1,7 +1,7 @@
 class Payment < ApplicationRecord
   has_many :expenses, dependent: :destroy
   belongs_to :book
-  belongs_to :tag
+  belongs_to :tag, optional: true
 
   def required_expense
     expenses.where(type_id: Type.find_by(slug: 'required').id).first
