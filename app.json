@@ -1,8 +1,8 @@
 {
   "name": "Small Sharp Tool",
   "description": "This app does one little thing, and does it well.",
-  "website": "https://fun.moeki.dev",
-  "repository": "https://github.com/moekidev/fun",
+  "website": "https://kakbo.moeki.dev",
+  "repository": "https://github.com/moekidev/kakbo",
   "env": {
     "NPM_CONFIG_PRODUCTION": {
       "description": "Access to packages declared under devDependencies in a different buildpack.",
