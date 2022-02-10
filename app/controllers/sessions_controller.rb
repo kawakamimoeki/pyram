@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       redirect_to book_path(current_book)
       return
     else
-      flash[:notice] = "Kakbo へようこそ！新しい家計簿を作成しましょう。"
+      flash[:notice] = "Pyram へようこそ！新しい家計簿を作成しましょう。"
       redirect_to new_book_path
     end
   end

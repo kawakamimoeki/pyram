@@ -1,4 +1,5 @@
 import '../css/main.css'
+import '../images/logo.png'
 import { Application } from '@hotwired/stimulus'
 import { LineController } from '../controllers/line_controller'
 import { DoughnutController } from '../controllers/doughnut_controller'
