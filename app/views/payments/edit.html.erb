@@ -45,3 +45,5 @@
     <%= f.submit "変更", style: "width: 100px; height: 100px; line-height: 100px", class: "inline-block shadow-lg bg-gray-600 text-white rounded-lg font-bold rounded-full text-xl" %>
   </div>
 <% end %>
+
+<%= button_to "削除する", book_payment_path, method: :delete, class: "text-red-400 float-right" %>

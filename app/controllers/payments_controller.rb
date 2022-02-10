@@ -30,6 +30,12 @@ class PaymentsController < ApplicationController
     @payment = Payment.find(params[:id])
   end
 
+  def destroy
+    @payment = Payment.find(params[:id])
+    @payment.destroy
+    redirect_to book_path(current_book)
+  end
+
   def update
     @payment = Payment.find(params[:id])
     @payment.update(
