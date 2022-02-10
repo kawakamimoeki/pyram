@@ -1,0 +1,50 @@
+<%= form_with url: url,
+              model: payment,
+              data: { controller: "expense-field" } do |f| %>
+  <div class="py-2">
+    <%= f.label "¥", class: "pr-3 text-4xl" %>
+    <%= f.number_field :amount, class: "p-2 text-4xl w-4/5 border-b-2", placeholder: "900", autofocus: true, required: true,
+          data: { expense_field_target: "all", action: "expense-field#call" },
+          value: @payment.expenses.sum(:amount) %>
+  </div>
+  <div class="py-2">
+    <%= f.label "最低限の暮らしのためのお金", class:"block mb-2" %>
+    <div>
+      <span class="pr-3">¥</span>
+      <%= f.number_field :required, class: "p-2 border-b-2 w-4/5",
+          data: { expense_field_target: "required", action: "expense-field#call" },
+          required: true,
+          value: @payment.expenses.find_by(type_id: Type.find_by(slug: 'required').id)&.amount || 0 %>
+    </div>
+  </div>
+  <div class="py-2">
+    <%= f.label "豊かな暮らしのためのお金", class: "block mb-2" %>
+    <div>
+      <span class="pr-3">¥</span>
+      <%= f.number_field :affluent, class: "p-2 border-b-2 w-4/5",
+          data: { expense_field_target: "affluent", action: "expense-field#call" },
+          required: true,
+          value: @payment.expenses.find_by(type_id: Type.find_by(slug: 'affluent').id)&.amount || 0 %>
+    </div>        
+  </div>
+  <div class="py-2">
+    <%= f.label "日付", class: "block mb-2" %>
+    <%= f.date_field :date, class: "p-2 border-2 w-full", value: @payment.date || Date.today %>
+  </div>
+  <div class="py-2">
+    <%= f.check_box :monthly, as: :boolean %>
+    <%= f.label :monthly, "月に一度の支払い" %>
+  </div>
+  <div class="py-2">
+    <%= f.label "タグ", class: "block mb-2" %>
+    <%= f.select :tag_id, Tag.all.pluck(:name, :id), include_blank: true, class: "w-full p-2 border-2" %>
+  </div>
+  <div class="py-2">
+    <%= f.label "メモ", class: "block mb-2" %>
+    <%= f.text_field :memo, class: "p-2 border-2 w-full", placeholder: "イオン"  %>
+  </div>
+  <div class="py-10 text-center w-full">
+    <%= f.submit submit_text, style: "width: 100px; height: 100px; line-height: 100px", class: "inline-block shadow-lg bg-gray-600 text-white rounded-lg font-bold rounded-full text-xl" %>
+  </div>
+<% end %>
+
