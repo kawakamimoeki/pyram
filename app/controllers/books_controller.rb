@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    @current = params[:current] ? Date.parse(params[:current]) : Date.today
+    @current = params[:month] ? Date.strptime(params[:month], "%Y-%m").end_of_month : Date.today
     payments = @book.payments.where(date: @current.beginning_of_month..@current.end_of_month).order(date: :desc)
     @payments_by_date = payments.group_by { |payment| payment.date.strftime('%Y/%m/%d') }
     session[:current] = @current
