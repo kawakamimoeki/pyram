@@ -19,5 +19,4 @@ application.register('expense-field', ExpenseFieldController)
 
 window.addEventListener('load', () => {
   document.querySelector('body').style.opacity = '1'
-  console.log('application loaded')
 })
