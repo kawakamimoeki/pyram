@@ -44,7 +44,7 @@
     <%= f.text_field :memo, class: "p-2 border-2 w-full", placeholder: "イオン"  %>
   </div>
   <div class="py-10 text-center w-full">
-    <%= f.submit submit_text, style: "width: 100px; height: 100px; line-height: 100px", class: "inline-block shadow-lg bg-gray-600 text-white rounded-lg font-bold rounded-full text-xl", data: { disable_with: "#{submit_text}中" } %>
+    <%= f.submit submit_text, style: "width: 100px; height: 100px; line-height: 100px", class: "inline-block shadow-lg bg-gray-600 text-white rounded-lg font-bold rounded-full text-xl disabled:opacity-50", data: { disable_with: "#{submit_text}中" } %>
   </div>
 <% end %>
 

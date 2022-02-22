@@ -4,6 +4,7 @@
   },
   "devDependencies": {
     "@hotwired/stimulus": "^3.0.1",
+    "@rails/ujs": "^7.0.2-2",
     "autoprefixer": "^10.4.2",
     "chart.js": "^3.7.0",
     "postcss": "^8.4.5",
