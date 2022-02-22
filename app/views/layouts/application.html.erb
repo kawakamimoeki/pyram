@@ -18,16 +18,22 @@
         <% end %>
       </p>
       <% if current_user %>
-        <%= link_to "#{current_user.name} さん", setting_user_path(current_user), style: "line-height: 50px;", class: "text-sm font-bold inline-block float-right mx-2" %>
+        <%= link_to setting_user_path(current_user), class: "px-2 pt-2 float-right", style: "padding-top: 7px;" do %>
+          <span class="material-icons-outlined">
+            account_circle
+          </span>
+        <% end %>
       <% end %>
       <% if current_book %>
-      <%= link_to current_book.name, setting_book_path(current_book), style: "line-height: 50px;", class: "text-sm font-bold inline-block float-right mx-2" %>
-      <%= link_to "タグ", book_tags_path(book_id: current_book.id), style: "line-height: 50px;", class: "text-sm font-bold inline-block float-right mx-2" %>
-      <%= link_to "予算", book_edit_budget_path(book_id: current_book.id), style: "line-height: 50px;", class: "text-sm font-bold inline-block float-right mx-2" %>
+      <%= link_to setting_book_path(current_book), class: "px-2 float-right", style: "padding-top: 6px;" do %>
+        <span class="material-icons-outlined">
+          menu_book
+        </span>
+      <% end %>
       <% end %>
     </header>
 
-    <main class="mx-auto px-3" style="overflow: hidden; box-sizing: border-box; width: 100%; padding-top: 40px; padding-bottom: 100px; max-width: 500px;">
+    <main class="mx-auto px-3" style="overflow: hidden; box-sizing: border-box; width: 100%; padding-top: 20px; padding-bottom: 100px; max-width: 500px;">
       <%= render(AlertComponent.new(text: flash[:notice]))%>
       <%= yield %>
     </main>

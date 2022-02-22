@@ -1,23 +1,32 @@
-<% unless @book == current_book %>
-<div class="pb-7">
-  <h4 class="text-lg mb-1"><b><%= @book.name %></b> に切り替える</h4>
-  <%= link_to "切り替える", switch_book_path(@book) %>
-</div>
-<% end %>
-
-<div class="pb-7">
-  <h4 class="text-lg mb-1"><b><%= @book.name %></b> のメンバー</h4>
-
-  <ul class="pl-3">
-  <% @book.users.each do |user| %>
-    <li><%= "#{user.name} <#{user.email}>" %></li>
+<div class="text-center">
+  <% unless @book == current_book %>
+  <div class="py-2">
+    <h4 class="text-lg mb-1"><b><%= @book.name %></b> に切り替える</h4>
+    <%= link_to "切り替える", switch_book_path(@book) %>
+  </div>
   <% end %>
-  </ul>
 
-  <%= link_to "+ 招待URLを作成", new_invite_path, class: "block py-4 text-sky-600" %>
-</div>
+  <div class="py-2">
+    <h4 class="text-lg mb-1"><b><%= @book.name %></b> のメンバー</h4>
 
-<div class="pb-7">
-  <h4 class="text-lg mb-1"><b><%= @book.name %></b> を削除する</h4>
-  <%= button_to "削除する", book_path(@book), method: "delete", class: "text-red-500", data: { confirm: "#{@book.name} のすべてのデータが削除されます。よろしいですか?"} %>
+    <ul class="pl-3">
+    <% @book.users.each do |user| %>
+      <li><%= "#{user.name} <#{user.email}>" %></li>
+    <% end %>
+    </ul>
+
+    <%= link_to "+ 招待URLを作成", new_invite_path, class: "block py-4 text-sky-600" %>
+  </div>
+
+  <div class="py-2">
+    <%= link_to "タグを見る", book_tags_path(book_id: current_book.id) %>
+  </div>
+
+  <div class="py-2">
+    <%= link_to "予算を編集する", book_edit_budget_path(book_id: current_book.id) %>
+  </div>
+
+  <div class="py-2">
+    <%= button_to "#{@book.name} を削除する", book_path(@book), method: "delete", class: "text-red-500", data: { confirm: "#{@book.name} のすべてのデータが削除されます。よろしいですか?"} %>
+  </div>
 </div>
