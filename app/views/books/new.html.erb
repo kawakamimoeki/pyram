@@ -6,6 +6,6 @@
     <%= f.text_field :name, class: "w-full p-4 border-2", placeholder: "タイトル", data: { paper_target: "amount" }, autofocus: true, required: true %>
   </div>
   <div class="py-5 text-center">
-    <%= f.submit "登録", class: "shadow-lg bg-gray-600 text-white rounded-lg font-bold rounded-full text-xl py-10 px-9" %>
+    <%= f.submit "登録", class: "shadow-lg bg-gray-600 text-white rounded-lg font-bold rounded-full text-xl py-10 px-9", data: { disable_with: '登録中' } %>
   </div>
 <% end %>
