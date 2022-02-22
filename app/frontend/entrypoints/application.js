@@ -16,3 +16,8 @@ application.register('cards', CardsController)
 application.register('addition', AddtionController)
 application.register('colorize', ColorizeController)
 application.register('expense-field', ExpenseFieldController)
+
+window.addEventListener('load', () => {
+  document.querySelector('body').style.display = 'block'
+  console.log('application loaded')
+})
