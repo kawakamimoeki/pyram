@@ -11,7 +11,7 @@
     -ms-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;">
-    <header class="px-4 shadow-md fixed w-full bg-white" style="z-index: 100; line-height: 50px; height: 50px;">
+    <header class="px-4 shadow-md w-full bg-white" style="line-height: 50px; height: 50px;">
       <p class="text-lg font-bold inline-block">
         <%= link_to root_path, class: "text-decoration-none text-dark" do %>
           <%= vite_image_tag "images/logo.png", width: "50px", height: "50px" %>
@@ -27,7 +27,7 @@
       <% end %>
     </header>
 
-    <main class="mx-auto px-3" style="overflow: hidden; box-sizing: border-box; width: 100%; padding-top: 80px; padding-bottom: 100px; max-width: 500px;">
+    <main class="mx-auto px-3" style="overflow: hidden; box-sizing: border-box; width: 100%; padding-top: 40px; padding-bottom: 100px; max-width: 500px;">
       <%= render(AlertComponent.new(text: flash[:notice]))%>
       <%= yield %>
     </main>
